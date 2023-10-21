@@ -28,19 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            txtSearch = new TextBox();
             btnSearch = new Button();
             btnClear = new Button();
             btnAddNew = new Button();
-            listView1 = new ListView();
+            lvProductList = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
+            columnHeader7 = new ColumnHeader();
+            columnHeader8 = new ColumnHeader();
             SuspendLayout();
             // 
-            // textBox1
+            // txtSearch
             // 
-            textBox1.Location = new Point(31, 46);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(881, 30);
-            textBox1.TabIndex = 0;
+            txtSearch.Location = new Point(31, 46);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(881, 30);
+            txtSearch.TabIndex = 0;
             // 
             // btnSearch
             // 
@@ -62,43 +70,99 @@
             // 
             // btnAddNew
             // 
-            btnAddNew.Location = new Point(1607, 44);
+            btnAddNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAddNew.Location = new Point(1499, 44);
             btnAddNew.Name = "btnAddNew";
             btnAddNew.Size = new Size(194, 32);
             btnAddNew.TabIndex = 3;
             btnAddNew.Text = "Add New Product";
             btnAddNew.UseVisualStyleBackColor = true;
+            btnAddNew.Click += btnAddNew_Click;
             // 
-            // listView1
+            // lvProductList
             // 
-            listView1.Location = new Point(31, 110);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(1770, 562);
-            listView1.TabIndex = 4;
-            listView1.UseCompatibleStateImageBehavior = false;
+            lvProductList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lvProductList.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8 });
+            lvProductList.FullRowSelect = true;
+            lvProductList.GridLines = true;
+            lvProductList.Location = new Point(31, 169);
+            lvProductList.MultiSelect = false;
+            lvProductList.Name = "lvProductList";
+            lvProductList.Size = new Size(1662, 729);
+            lvProductList.TabIndex = 4;
+            lvProductList.UseCompatibleStateImageBehavior = false;
+            lvProductList.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Id";
+            columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Product Name";
+            columnHeader2.Width = 600;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Quantity /Unit";
+            columnHeader3.Width = 200;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Unit Price";
+            columnHeader4.Width = 120;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Unit Stock";
+            columnHeader5.Width = 120;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Unit Order";
+            columnHeader6.Width = 120;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "Category Name";
+            columnHeader7.Width = 200;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Supplier Name";
+            columnHeader8.Width = 200;
             // 
             // ProductList
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1828, 984);
-            Controls.Add(listView1);
+            ClientSize = new Size(1734, 984);
+            Controls.Add(lvProductList);
             Controls.Add(btnAddNew);
             Controls.Add(btnClear);
             Controls.Add(btnSearch);
-            Controls.Add(textBox1);
+            Controls.Add(txtSearch);
             Name = "ProductList";
-            Text = "Form1";
+            Text = "Product List";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox txtSearch;
         private Button btnSearch;
         private Button btnClear;
         private Button btnAddNew;
-        private ListView listView1;
+        private ListView lvProductList;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader7;
+        private ColumnHeader columnHeader8;
     }
 }

@@ -6,5 +6,13 @@ namespace POS.App
         {
             InitializeComponent();
         }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            ProductDetailForm detailForm = new();
+            detailForm.ShowDialog();
+        }
+
+
     }
 }
