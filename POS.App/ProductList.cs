@@ -13,9 +13,8 @@ namespace POS.App
         }
 
         private void ProductList_Load(object sender, EventArgs e)
-        {
-            var product = productServices.GetProductList();
-            RenderListProduct(product);
+        {           
+            LoadProductList();
 
         }
 
@@ -47,12 +46,13 @@ namespace POS.App
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            LoadProductList();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            txtSearch.Clear();
+            LoadProductList();
         }
 
         private void lvProductList_DoubleClick(object sender, EventArgs e)
@@ -64,6 +64,10 @@ namespace POS.App
             detailForm.Text = "Product: " + product.ProductName;
             detailForm.CurrentProduct = product;
             detailForm.ShowDialog();
+        }
+        private void LoadProductList()
+        {
+            RenderListProduct(productServices.GetProductList(txtSearch.Text.Trim()));
         }
     }
 }

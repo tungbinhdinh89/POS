@@ -6,6 +6,7 @@ namespace POS.Lib.Services
 {
     public class ProductServices
     {
+
         public List<Products> GetProductList(string? search = "")
         {
             var sql = """
@@ -16,8 +17,16 @@ namespace POS.Lib.Services
                 """;
 
             var connection = GetConnection();
-            var product = connection.Query<Products>(sql).ToList();
-            return product;
+            List<Products> products = new List<Products>();
+            if (!string.IsNullOrEmpty(search))
+            {
+                sql += " where p.ProductName like @search";
+                //
+            }
+
+            var parameter = new { search = string.IsNullOrEmpty(search) ? "" : $"%{search}%" };
+            products = connection.Query<Products>(sql, parameter).ToList();
+            return products;
 
         }
 
