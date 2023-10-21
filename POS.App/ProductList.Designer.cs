@@ -58,6 +58,7 @@
             btnSearch.TabIndex = 1;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // btnClear
             // 
@@ -67,6 +68,7 @@
             btnClear.TabIndex = 2;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnAddNew
             // 
@@ -92,6 +94,7 @@
             lvProductList.TabIndex = 4;
             lvProductList.UseCompatibleStateImageBehavior = false;
             lvProductList.View = View.Details;
+            lvProductList.ColumnClick += lvProductList_ColumnClick;
             // 
             // columnHeader1
             // 
@@ -145,6 +148,7 @@
             Controls.Add(txtSearch);
             Name = "ProductList";
             Text = "Product List";
+            Load += ProductList_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POS.Lib.Models
 {
-    public class Models
+    public class Products
     {
         public int Id { get; set; }
         public string ProductName { get; set; } = null;
