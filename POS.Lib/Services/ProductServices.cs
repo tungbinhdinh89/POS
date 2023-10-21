@@ -1,4 +1,6 @@
-﻿using POS.Lib.Models;
+﻿using Dapper;
+using Microsoft.Data.SqlClient;
+using POS.Lib.Models;
 
 namespace POS.Lib.Services
 {
@@ -6,17 +8,23 @@ namespace POS.Lib.Services
     {
         public List<Products> GetProductList(string? search = "")
         {
-            return new List<Products>
-            {
-                new() { Id = 1, ProductName = "Chai", QuantityPerUnit = "10 boxes x 20 bags", UnitPrice = 20000, UnitsInStock = 39, UnitsOnOrder = 0, CategoryName = "1", SupplierName= "2"}
+            var sql = """
+                select p.ProductId as Id , p.ProductName, p.CategoryID, p.SupplierID, p.QuantityPerUnit, p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, c.CategoryName, s.CompanyName as SupplierName
+                from products as p
+                join Categories as c on c.CategoryID = p.CategoryID
+                join Suppliers as s on s.SupplierID = p.SupplierID
+                """;
 
-            };
+            var connection = GetConnection();
+            var product = connection.Query<Products>(sql).ToList();
+            return product;
+
         }
 
-        //private Sql GetConnection()
-        //{
-        //    var sqlConnection connection
+        private SqlConnection GetConnection()
+        {
+            return new SqlConnection("Server=TUNGBINHDINH89\\SQLEXPRESS;Database=northwind;Trusted_Connection=True;TrustServerCertificate=True");
 
-        //}
+        }
     }
 }
