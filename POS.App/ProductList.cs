@@ -6,6 +6,7 @@ namespace POS.App
     public partial class ProductList : Form
     {
         public ProductServices productServices = new ProductServices();
+        //public List<Products> products = new List<Products>();
         public ProductList()
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace POS.App
                 item.SubItems.Add(product.UnitsOnOrder.ToString());
                 item.SubItems.Add(product.CategoryName);
                 item.SubItems.Add(product.SupplierName);
-                item.Tag = product;
+                item.Tag = product; // boxing
                 lvProductList.Items.Add(item);
 
             }
@@ -54,11 +55,15 @@ namespace POS.App
 
         }
 
-        private void lvProductList_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void lvProductList_DoubleClick(object sender, EventArgs e)
         {
+            var lvi = lvProductList.SelectedItems[0];
+            var product = (Products)lvi.Tag; // unboxing
 
+            ProductDetailForm detailForm = new ProductDetailForm();
+            detailForm.Text = "Product: " + product.ProductName;
+            detailForm.CurrentProduct = product;
+            detailForm.ShowDialog();
         }
-
-     
     }
 }

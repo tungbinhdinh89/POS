@@ -13,10 +13,10 @@ namespace POS.Lib.Services
             };
         }
 
-        private Sql GetConnection()
-        {
-            var sqlConnection connection
+        //private Sql GetConnection()
+        //{
+        //    var sqlConnection connection
 
-        }
+        //}
     }
 }

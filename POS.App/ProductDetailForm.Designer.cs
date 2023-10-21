@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtProductName = new TextBox();
+            txtQuantity = new TextBox();
             label2 = new Label();
-            textBox3 = new TextBox();
+            txtUnitPrice = new TextBox();
             label3 = new Label();
-            textBox4 = new TextBox();
+            txtUnitStock = new TextBox();
             label4 = new Label();
-            textBox5 = new TextBox();
+            txtUnitOrder = new TextBox();
             label5 = new Label();
-            textBox6 = new TextBox();
+            txtCategoryName = new TextBox();
             label6 = new Label();
-            textBox7 = new TextBox();
+            txtSupplierName = new TextBox();
             label7 = new Label();
-            btnConfirm = new Button();
+            btnSave = new Button();
             btnCancel = new Button();
             SuspendLayout();
             // 
@@ -55,19 +55,19 @@
             label1.TabIndex = 0;
             label1.Text = "Product Name";
             // 
-            // textBox1
+            // txtProductName
             // 
-            textBox1.Location = new Point(34, 72);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(410, 30);
-            textBox1.TabIndex = 1;
+            txtProductName.Location = new Point(34, 72);
+            txtProductName.Name = "txtProductName";
+            txtProductName.Size = new Size(410, 30);
+            txtProductName.TabIndex = 1;
             // 
-            // textBox2
+            // txtQuantity
             // 
-            textBox2.Location = new Point(34, 163);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(172, 30);
-            textBox2.TabIndex = 3;
+            txtQuantity.Location = new Point(34, 163);
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Size = new Size(172, 30);
+            txtQuantity.TabIndex = 3;
             // 
             // label2
             // 
@@ -78,28 +78,28 @@
             label2.TabIndex = 2;
             label2.Text = "Quantity /Unit";
             // 
-            // textBox3
+            // txtUnitPrice
             // 
-            textBox3.Location = new Point(34, 258);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(172, 30);
-            textBox3.TabIndex = 5;
+            txtUnitPrice.Location = new Point(34, 258);
+            txtUnitPrice.Name = "txtUnitPrice";
+            txtUnitPrice.Size = new Size(172, 30);
+            txtUnitPrice.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(34, 219);
             label3.Name = "label3";
-            label3.Size = new Size(47, 23);
+            label3.Size = new Size(84, 23);
             label3.TabIndex = 4;
-            label3.Text = "Price";
+            label3.Text = "Unit Price";
             // 
-            // textBox4
+            // txtUnitStock
             // 
-            textBox4.Location = new Point(34, 353);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(215, 30);
-            textBox4.TabIndex = 7;
+            txtUnitStock.Location = new Point(34, 353);
+            txtUnitStock.Name = "txtUnitStock";
+            txtUnitStock.Size = new Size(215, 30);
+            txtUnitStock.TabIndex = 7;
             // 
             // label4
             // 
@@ -110,12 +110,12 @@
             label4.TabIndex = 6;
             label4.Text = "Unit Stock";
             // 
-            // textBox5
+            // txtUnitOrder
             // 
-            textBox5.Location = new Point(34, 450);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(215, 30);
-            textBox5.TabIndex = 9;
+            txtUnitOrder.Location = new Point(34, 450);
+            txtUnitOrder.Name = "txtUnitOrder";
+            txtUnitOrder.Size = new Size(215, 30);
+            txtUnitOrder.TabIndex = 9;
             // 
             // label5
             // 
@@ -126,12 +126,12 @@
             label5.TabIndex = 8;
             label5.Text = "Unit Order";
             // 
-            // textBox6
+            // txtCategoryName
             // 
-            textBox6.Location = new Point(34, 543);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(343, 30);
-            textBox6.TabIndex = 11;
+            txtCategoryName.Location = new Point(34, 543);
+            txtCategoryName.Name = "txtCategoryName";
+            txtCategoryName.Size = new Size(343, 30);
+            txtCategoryName.TabIndex = 11;
             // 
             // label6
             // 
@@ -142,12 +142,12 @@
             label6.TabIndex = 10;
             label6.Text = "Category Name";
             // 
-            // textBox7
+            // txtSupplierName
             // 
-            textBox7.Location = new Point(34, 641);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(343, 30);
-            textBox7.TabIndex = 13;
+            txtSupplierName.Location = new Point(34, 641);
+            txtSupplierName.Name = "txtSupplierName";
+            txtSupplierName.Size = new Size(343, 30);
+            txtSupplierName.TabIndex = 13;
             // 
             // label7
             // 
@@ -158,15 +158,16 @@
             label7.TabIndex = 12;
             label7.Text = "Supplier Name";
             // 
-            // btnConfirm
+            // btnSave
             // 
-            btnConfirm.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnConfirm.Location = new Point(457, 743);
-            btnConfirm.Name = "btnConfirm";
-            btnConfirm.Size = new Size(105, 32);
-            btnConfirm.TabIndex = 14;
-            btnConfirm.Text = "Confirm";
-            btnConfirm.UseVisualStyleBackColor = true;
+            btnSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSave.Location = new Point(457, 743);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(105, 32);
+            btnSave.TabIndex = 14;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
@@ -186,24 +187,25 @@
             ClientSize = new Size(704, 806);
             ControlBox = false;
             Controls.Add(btnCancel);
-            Controls.Add(btnConfirm);
-            Controls.Add(textBox7);
+            Controls.Add(btnSave);
+            Controls.Add(txtSupplierName);
             Controls.Add(label7);
-            Controls.Add(textBox6);
+            Controls.Add(txtCategoryName);
             Controls.Add(label6);
-            Controls.Add(textBox5);
+            Controls.Add(txtUnitOrder);
             Controls.Add(label5);
-            Controls.Add(textBox4);
+            Controls.Add(txtUnitStock);
             Controls.Add(label4);
-            Controls.Add(textBox3);
+            Controls.Add(txtUnitPrice);
             Controls.Add(label3);
-            Controls.Add(textBox2);
+            Controls.Add(txtQuantity);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(txtProductName);
             Controls.Add(label1);
             Name = "ProductDetailForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Product Info";
+            Text = "New Product";
+            Load += ProductDetailForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -211,20 +213,20 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtProductName;
+        private TextBox txtQuantity;
         private Label label2;
-        private TextBox textBox3;
+        private TextBox txtUnitPrice;
         private Label label3;
-        private TextBox textBox4;
+        private TextBox txtUnitStock;
         private Label label4;
-        private TextBox textBox5;
+        private TextBox txtUnitOrder;
         private Label label5;
-        private TextBox textBox6;
+        private TextBox txtCategoryName;
         private Label label6;
-        private TextBox textBox7;
+        private TextBox txtSupplierName;
         private Label label7;
-        private Button btnConfirm;
+        private Button btnSave;
         private Button btnCancel;
     }
 }
