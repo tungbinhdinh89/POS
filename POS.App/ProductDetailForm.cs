@@ -1,20 +1,13 @@
 ﻿using POS.Lib.Models;
 using POS.Lib.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace POS.App
 {
     public partial class ProductDetailForm : Form
     {
         public CategoryService categoryService = new CategoryService();
+        public SupplierService supplierService = new SupplierService();
+        public ProductServices productServices = new ProductServices();
         public Product CurrentProduct { get; set; } = null;
 
         public ProductDetailForm()
@@ -29,14 +22,29 @@ namespace POS.App
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Product current = new()
+            {
+                ProductName = txtProductName.Text.Trim(),
+                CategoryID = (int)cbCategory.SelectedValue,
+                SupplierID = (int)cbSupplier.SelectedValue,
+                QuantityPerUnit = txtQuantity.Text.Trim(),
+                UnitPrice = decimal.Parse(txtUnitPrice.Text.Trim()),
+                UnitsInStock = int.Parse(txtUnitStock.Text.Trim()),
+                UnitsOnOrder = int.Parse(txtUnitStock.Text.Trim())
+            };
+
+            productServices.AddProduct(current);
+            DialogResult = DialogResult.OK;
+            Close();
 
         }
 
-      
+
 
         private void ProductDetailForm_Load(object sender, EventArgs e)
         {
             LoadCategoryList();
+            LoadSupplierList();
             if (CurrentProduct != null)
             {
                 BindProductData(CurrentProduct);
@@ -53,7 +61,7 @@ namespace POS.App
 
             // todo: show combo box 
             cbCategory.SelectedValue = product.CategoryID;
-            //txtSupplierName.Text = product.SupplierName;
+            cbSupplier.SelectedValue = product.SupplierID;
         }
 
         private void LoadCategoryList()
@@ -63,6 +71,16 @@ namespace POS.App
             cbCategory.DisplayMember = "CategoryName";
             cbCategory.ValueMember = "Id";
         }
+
+        private void LoadSupplierList()
+        {
+            var suppliers = supplierService.GetSupplierList();
+            cbSupplier.DataSource = suppliers;
+            cbSupplier.DisplayMember = "SupplierName";
+            cbSupplier.ValueMember = "Id";
+        }
+
+
 
     }
 }

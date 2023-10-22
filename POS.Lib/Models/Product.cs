@@ -13,7 +13,7 @@ namespace POS.Lib.Models
         public int? SupplierID { get; set; }
         public int? CategoryID { get; set; }
         public string QuantityPerUnit { get; set; } = null;
-        public double? UnitPrice { get; set; }
+        public decimal? UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
         public int UnitsOnOrder { get; set; }
         public int ReorderLevel { get; set; }

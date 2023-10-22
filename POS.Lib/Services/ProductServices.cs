@@ -21,7 +21,7 @@ namespace POS.Lib.Services
             if (!string.IsNullOrEmpty(search))
             {
                 sql += " where p.ProductName like @search";
-                //
+    
             }
 
             var parameter = new { search = string.IsNullOrEmpty(search) ? "" : $"%{search}%" };
@@ -34,6 +34,26 @@ namespace POS.Lib.Services
         {
             return new SqlConnection("Server=TUNGBINHDINH89\\SQLEXPRESS;Database=northwind;Trusted_Connection=True;TrustServerCertificate=True");
 
+        }
+
+        public void AddProduct(Product product)
+        {
+            var sql = """
+                insert into products (ProductName, CategoryID, SupplierID, QuantityPerUnit, UnitPrice, UnitsInStock)
+                values (@productName, @categoryId, @supplierId, @quantityPerUnit, @unitPrice, @unitsInStock)
+                """;
+            var parameter = new
+            {
+                productName = product.ProductName,
+                categoryId = product.CategoryID,
+                supplierId = product.SupplierID,
+                quantityPerUnit = product.QuantityPerUnit,
+                unitPrice = product.UnitPrice,
+                unitsInStock = product.UnitsInStock,
+                unitsOnOrder = product.UnitsOnOrder
+            };
+            var connection = GetConnection();
+            connection.Execute(sql, parameter);
         }
     }
 }

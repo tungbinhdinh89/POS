@@ -9,7 +9,7 @@ namespace POS.Lib.Services
         public List<Category> GetCategoryList()
         {
             var connection = productService.GetConnection();
-            var sql = "select c.CategoryID, c.CategoryName, c.Description from Categories as c";
+            var sql = "select c.CategoryID as Id, c.CategoryName, c.Description from Categories as c";
             var categories = connection.Query<Category>(sql).ToList();
             return categories;
         }
