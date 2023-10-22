@@ -6,7 +6,7 @@ namespace POS.App
     public partial class ProductList : Form
     {
         public ProductServices productServices = new ProductServices();
-        //public List<Products> products = new List<Products>();
+        
         public ProductList()
         {
             InitializeComponent();
@@ -24,10 +24,10 @@ namespace POS.App
             detailForm.ShowDialog();
         }
 
-        private void RenderListProduct(List<Products> products)
+        private void RenderListProduct(List<Product> products)
         {
             lvProductList.Items.Clear();
-            foreach (Products product in products)
+            foreach (Product product in products)
             {
                 //var item = new ListViewItem(product.Id.ToString());
                 ListViewItem item = new(product.Id.ToString());
@@ -58,7 +58,7 @@ namespace POS.App
         private void lvProductList_DoubleClick(object sender, EventArgs e)
         {
             var lvi = lvProductList.SelectedItems[0];
-            var product = (Products)lvi.Tag; // unboxing
+            var product = (Product)lvi.Tag; // unboxing
 
             ProductDetailForm detailForm = new ProductDetailForm();
             detailForm.Text = "Product: " + product.ProductName;

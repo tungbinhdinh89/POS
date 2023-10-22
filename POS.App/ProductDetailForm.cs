@@ -1,4 +1,5 @@
 ﻿using POS.Lib.Models;
+using POS.Lib.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,8 @@ namespace POS.App
 {
     public partial class ProductDetailForm : Form
     {
-        public Products CurrentProduct { get; set; } = null;
+        public CategoryService categoryService = new CategoryService();
+        public Product CurrentProduct { get; set; } = null;
 
         public ProductDetailForm()
         {
@@ -30,7 +32,18 @@ namespace POS.App
 
         }
 
-        private void BindProductData(Products product)
+      
+
+        private void ProductDetailForm_Load(object sender, EventArgs e)
+        {
+            LoadCategoryList();
+            if (CurrentProduct != null)
+            {
+                BindProductData(CurrentProduct);
+            }
+        }
+
+        private void BindProductData(Product product)
         {
             txtProductName.Text = product.ProductName;
             txtQuantity.Text = product.QuantityPerUnit.ToString();
@@ -39,18 +52,17 @@ namespace POS.App
             txtUnitOrder.Text = product.UnitsOnOrder.ToString();
 
             // todo: show combo box 
-            txtCategoryName.Text = product.CategoryName;
-            txtSupplierName.Text = product.SupplierName;
+            cbCategory.SelectedValue = product.CategoryID;
+            //txtSupplierName.Text = product.SupplierName;
         }
 
-        private void ProductDetailForm_Load(object sender, EventArgs e)
+        private void LoadCategoryList()
         {
-            if (CurrentProduct != null)
-            {
-                BindProductData(CurrentProduct);
-            }
+            var categories = categoryService.GetCategoryList();
+            cbCategory.DataSource = categories;
+            cbCategory.DisplayMember = "CategoryName";
+            cbCategory.ValueMember = "Id";
         }
-
 
     }
 }

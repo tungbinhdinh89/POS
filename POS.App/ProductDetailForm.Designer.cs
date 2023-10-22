@@ -38,12 +38,12 @@
             label4 = new Label();
             txtUnitOrder = new TextBox();
             label5 = new Label();
-            txtCategoryName = new TextBox();
             label6 = new Label();
-            txtSupplierName = new TextBox();
             label7 = new Label();
             btnSave = new Button();
             btnCancel = new Button();
+            cbCategory = new ComboBox();
+            cbSupplier = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -126,13 +126,6 @@
             label5.TabIndex = 8;
             label5.Text = "Unit Order";
             // 
-            // txtCategoryName
-            // 
-            txtCategoryName.Location = new Point(34, 543);
-            txtCategoryName.Name = "txtCategoryName";
-            txtCategoryName.Size = new Size(343, 30);
-            txtCategoryName.TabIndex = 11;
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -141,13 +134,6 @@
             label6.Size = new Size(130, 23);
             label6.TabIndex = 10;
             label6.Text = "Category Name";
-            // 
-            // txtSupplierName
-            // 
-            txtSupplierName.Location = new Point(34, 641);
-            txtSupplierName.Name = "txtSupplierName";
-            txtSupplierName.Size = new Size(343, 30);
-            txtSupplierName.TabIndex = 13;
             // 
             // label7
             // 
@@ -180,17 +166,33 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // cbCategory
+            // 
+            cbCategory.FormattingEnabled = true;
+            cbCategory.Location = new Point(37, 553);
+            cbCategory.Name = "cbCategory";
+            cbCategory.Size = new Size(212, 31);
+            cbCategory.TabIndex = 16;
+            // 
+            // cbSupplier
+            // 
+            cbSupplier.FormattingEnabled = true;
+            cbSupplier.Location = new Point(37, 641);
+            cbSupplier.Name = "cbSupplier";
+            cbSupplier.Size = new Size(212, 31);
+            cbSupplier.TabIndex = 17;
+            // 
             // ProductDetailForm
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(704, 806);
             ControlBox = false;
+            Controls.Add(cbSupplier);
+            Controls.Add(cbCategory);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
-            Controls.Add(txtSupplierName);
             Controls.Add(label7);
-            Controls.Add(txtCategoryName);
             Controls.Add(label6);
             Controls.Add(txtUnitOrder);
             Controls.Add(label5);
@@ -222,11 +224,11 @@
         private Label label4;
         private TextBox txtUnitOrder;
         private Label label5;
-        private TextBox txtCategoryName;
         private Label label6;
-        private TextBox txtSupplierName;
         private Label label7;
         private Button btnSave;
         private Button btnCancel;
+        private ComboBox cbCategory;
+        private ComboBox cbSupplier;
     }
 }
